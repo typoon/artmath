@@ -1,6 +1,5 @@
 var Rect = (function () {
 
-
     // Based on the two points given, figure out the other
     // two points, so that we can easily rotate later if needed
     // or just to return them so they can be drawn by external functions
@@ -50,8 +49,8 @@ var Rect = (function () {
         this.p2 = rbp;
         this.p3 = lbp;
 
-        this.centerX = Math.abs(this.p0.x - this.p1.x)/2 + this.p0.x;
-        this.centerY = Math.abs(this.p3.y - this.p0.y)/2 + this.p0.y;
+        this.centerX = Math.round(Math.abs(this.p0.x - this.p1.x)/2 + this.p0.x);
+        this.centerY = Math.round(Math.abs(this.p3.y - this.p0.y)/2 + this.p0.y);
     }
 
 
@@ -107,8 +106,8 @@ var Rect = (function () {
     // @param p: Point2 - New center
     // Maybe call this translate()?
     Rect.prototype.recenter = function(p) {
-        var a = p.x - this.centerX;
-        var b = p.y - this.centerY;
+        var a = Math.round(p.x - this.centerX);
+        var b = Math.round(p.y - this.centerY);
 
         this.p0.x += a;
         this.p1.x += a;
