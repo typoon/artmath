@@ -8,7 +8,7 @@ var Line = (function () {
      *
      * @author Henrique Montenegro Decaria
      * @class
-     * @tutorial Line
+     * @tutorial line
      * @constructs Line
      * @param {Point2} p0 - The point where the line starts
      * @param {Point2} p1 - The point where the line ends
