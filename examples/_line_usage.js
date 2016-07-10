@@ -1,6 +1,6 @@
 var HEIGHT = 800;
 var WIDTH = 800;
-var ctx = get2DContext();
+var ctx = create2DContext(WIDTH, HEIGHT, "canvas");
 var p0 = new Point2(100, 100);
 var p1 = new Point2(500, 100);
 var l = new Line(p0, p1);
@@ -16,6 +16,8 @@ function draw(points) {
     ctx.stroke();
 }
 
+// Make the quadrants sane, by moving the origin to the lower left corner of
+// the canvas. Now it has the same properties as we usually get in math
 ctx.translate(0, HEIGHT);
 ctx.scale(1, -1);
 
@@ -56,3 +58,11 @@ for(var k = 10; k < 21; k++) {
 
     }
 }
+
+
+var p0 = new Point2(100, 100);
+var p1 = new Point2(400, 100);
+var line = new Line(p0, p1);
+line.debug();
+line.rotate(90 * Math.PI / 180);
+line.debug();

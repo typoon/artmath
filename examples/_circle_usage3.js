@@ -1,6 +1,6 @@
 var WIDTH = 800;
 var HEIGHT = 800;
-var ctx = get2DContext();
+var ctx = create2DContext(WIDTH, HEIGHT, "canvas");
 document.getElementById("draw-area").appendChild(ctx.canvas);
 
 //define gradient
