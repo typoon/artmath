@@ -34,6 +34,17 @@ var Point2 = (function () {
 
     }
 
+    Point2.prototype.rotateRef = function (ref, angle) {
+        var x = this.x - ref.x;
+        var y = this.y - ref.y;
+
+        var p = new Point2(x,y);
+        p.rotate(angle);
+
+        this.x = Math.round(p.x + ref.x);
+        this.y = Math.round(p.y + ref.y);
+    }
+
     Point2.prototype.clone = function() {
         return new Point2(this.x, this.y);
     }
