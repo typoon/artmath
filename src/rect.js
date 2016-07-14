@@ -1,3 +1,5 @@
+'use strict';
+
 var Rect = (function () {
 
     // Based on the two points given, figure out the other
@@ -94,7 +96,47 @@ var Rect = (function () {
     }
 
     Rect.prototype.getPoints = function() {
-        return [this.p0, this.p1, this.p2, this.p3];
+        return [this.p0.clone(), this.p1.clone(), 
+                this.p2.clone(), this.p3.clone()];
+    }
+
+    /**
+     * Divides each side of the rectangle in `divs` parts. 
+     *
+     *
+     * @param {int} divs - Number of parts to divide each side of the rectangle
+     */
+    Rect.prototype.getPoints2 = function(divs) {
+        var points = new Array();
+
+        points = points.concat(new Line(this.p0, this.p1).divide(divs));
+        points.pop();
+        points = points.concat(new Line(this.p1, this.p2).divide(divs));
+        points.pop();
+        points = points.concat(new Line(this.p2, this.p3).divide(divs));
+        points.pop();
+        points = points.concat(new Line(this.p3, this.p0).divide(divs));
+        points.pop();
+
+        return points;
+    }
+
+    // TODO: this should probably be in line.js
+    // @param {Point2} p0 - Start point
+    // @param {Point2} p1 - End point
+    // @returns Array<Point2>
+    Rect.prototype.divLine = function(p0, p1, divs) {
+        var points = new Array();
+
+        var incX = (p1.x - p0.x)/divs;
+        var incY = (p1.y - p0.y)/divs;
+
+        for(var i = 0; i < divs; i++) {
+            var p = new Point2(p0.x + (incX * i), p0.y + (incY * i));
+            points.push(p);
+        }
+
+        return points;
     }
 
     Rect.prototype.getCenter = function() {
