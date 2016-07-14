@@ -1,3 +1,5 @@
+'use strict';
+
 var Point2 = (function () {
 
     /**
