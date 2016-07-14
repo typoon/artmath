@@ -1,3 +1,5 @@
+'use strict';
+
 function my_include(path) {
     var s = document.createElement('script');
     s.src = path;
@@ -47,6 +49,9 @@ function create2DContext(width, height, id) {
         this.fillRect(x, y, w, w);
     }
 
+    ctx.translate(0, HEIGHT);
+    ctx.scale(1, -1);
+
     return ctx;
 }
 
@@ -79,5 +84,6 @@ function draw(ctx, points) {
     for(var i = 0; i < points.length; i++) {
         ctx.lineTo(points[i].x, points[i].y);
     }
+    ctx.stroke();
     ctx.closePath();
 }
