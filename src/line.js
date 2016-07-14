@@ -1,3 +1,5 @@
+'use strict';
+
 var Line = (function () {
     /**
      * Constructor for the Line class
@@ -49,6 +51,16 @@ var Line = (function () {
  */
 Line.prototype.rotate = function(angle) {
     this.rotateRef(this.p0, angle);
+}
+
+/**
+ * Rotates the line by pinning its middle point
+ *
+ * @TODO: implement me
+ */
+Line.prototype.rotateMiddle = function(angle) {
+    var x = this.p0.x - this.p1.x;
+    this.rotateRef(new Point2(x, y), angle);
 }
 
 /**
@@ -217,6 +229,46 @@ Line.prototype.getSlopeAngle = function() {
 
     return slopeAngle;
 
+}
+
+/**
+ * Divides the line in `n` equal parts and returns an array of points for those
+ * divisions. 
+ * The return will contain `n+1` points
+ *
+ * Consider the following line:
+ * *---------*
+ * p0        p1
+ *
+ * By calling divide(3), it will be divided in the following points:
+ *
+ * *---*---*---*
+ * p0  p1  p2  p3
+ *
+ * @param {int} n - Number of divisions to make
+ * @returns Array<Point2> The points that divide the line
+ */
+Line.prototype.divide = function(n) {
+        var points = new Array();
+
+        if(n < 1) {
+            console.log("Cannot divide line in 0 or less parts");
+            return [];
+        }
+
+        if(n == 1) {
+            return [this.p0.clone(), this.p1.clone()];
+        }
+
+        var incX = (this.p1.x - this.p0.x) / n;
+        var incY = (this.p1.y - this.p0.y) / n;
+
+        for(var i = 0; i <= n; i++) {
+            var p = new Point2(this.p0.x + (incX * i), this.p0.y + (incY * i));
+            points.push(p);
+        }
+
+        return points;
 }
 
 /**
