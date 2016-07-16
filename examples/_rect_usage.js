@@ -31,12 +31,12 @@ for(i = 0; i < WIDTH/SIZE; i++) {
     for(j = 0; j < HEIGHT/SIZE; j++) {
         r.recenter(new Point2(SIZE * i + (SIZE/2), SIZE * j + (SIZE/2)));
 
-        var currentColor = colors[Math.floor(getRandom(colors.length))];
+        var currentColor = colors[Math.floor(0, getRandom(colors.length))];
 
         ctx.globalAlpha = Math.random() + 0.25;
         ctx.fillStyle = currentColor;
         ctx.strokeStyle = currentColor;
-        ctx.lineWidth= Math.round(getRandom(20));
+        ctx.lineWidth= Math.round(getRandom(0, 20));
 
         draw(r, ctx);
 

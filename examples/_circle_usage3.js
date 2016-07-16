@@ -101,7 +101,7 @@ function clearDraw(points, count) {
     ctx.lineWidth = 1;
     ctx.beginPath();
 
-    getRandom(10) >= 5 ? moveY += 0.5: moveY -= 0.5;
+    getRandom(0, 10) >= 5 ? moveY += 0.5: moveY -= 0.5;
     ctx.moveTo(points[0].x+count, points[0].y + moveY);
     for(var j = 0; j < points.length; j++) {
         ctx.lineTo(points[j].x+count, points[j].y + moveY);
@@ -136,7 +136,7 @@ for(var i = 0; i < TOTAL_CIRCLES; i++) {
     for(var j = 0; j < 360; j+= 360/PPC) {
         var angle = j * Math.PI / 180;
         points.push(c.getPoint(angle));
-        c.radius = Math.random() * getRandom(200) + 100 ;
+        c.radius = Math.random() * getRandom(0, 200) + 100 ;
     }
 
     circles.push(points);

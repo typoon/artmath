@@ -18,8 +18,8 @@ function draw(c) {
     var points = c.getPoints(72);
     points.push(points[0]);
 
-    //ctx.strokeStyle = colors[getRandomRound(colors.length)];
-    //ctx.lineWidth = getRandomRound(3)+1;
+    //ctx.strokeStyle = colors[getRandomRound(0, colors.length)];
+    //ctx.lineWidth = getRandomRound(0, 3)+1;
     ctx.lineWidth = 2;
     ctx.beginPath();
     for(var j = 0; j < points.length; j++) {
@@ -82,8 +82,8 @@ for(var i = 0; i < HEIGHT/2 - 25; i+=5) {
 
 
     ctx.globalAlpha = (Math.random() * 0.2) + 0.2;
-    //ctx.strokeStyle = colors[getRandomRound(colors.length)];
-    ctx.lineWidth = getRandomRound(3)+1;
+    //ctx.strokeStyle = colors[getRandomRound(0, colors.length)];
+    ctx.lineWidth = getRandomRound(0, 3)+1;
     ctx.beginPath();
     for(var j = 0; j < points.length; j++) {
         ctx.lineTo(points[j].x, points[j].y);
@@ -99,7 +99,7 @@ var alpha = 0.1;
 for(var k = 10; k >= 0; k--) {
     for(var i = 0; i < points.length; i++) {
         var c = new Circle(100 + (k * 10), points[i]);
-        var color = colors[getRandomRound(colors.length)];
+        var color = colors[getRandomRound(0, colors.length)];
 
         var ps = c.getPoints(90);
         ps.push(ps[0]);

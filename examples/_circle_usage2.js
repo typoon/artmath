@@ -145,7 +145,7 @@ function animate(start_points) {
         var points = new Array();
         for(var i = 0; i <= 360; i+= 360/DIVS) {
             var angle = i * Math.PI / 180;
-            c.radius = Math.random() * getRandom(90) + 301;
+            c.radius = Math.random() * getRandom(0, 90) + 301;
             points.push(c.getPoint(angle));
         }
     }
@@ -153,7 +153,7 @@ function animate(start_points) {
     var points2 = new Array();
     for(var i = 0; i <= 360; i+= 360/DIVS) {
         var angle = i * Math.PI / 180;
-        c.radius = Math.random() * getRandom(90) + 301;
+        c.radius = Math.random() * getRandom(0, 90) + 301;
         points2.push(c.getPoint(angle));
     }
 
