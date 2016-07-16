@@ -56,12 +56,12 @@ function create2DContext(width, height, id) {
 }
 
 
-function getRandom(max) {
-    return Math.random() * max;
+function getRandom(min, max) {
+    return (Math.random() * (max - min)) + max;
 }
 
-function getRandomRound(max) {
-    return Math.round(Math.random() * max);
+function getRandomRound(min, max) {
+    return Math.round(Math.random() * (max - min)) + max;
 }
 
 /**
