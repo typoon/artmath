@@ -40,7 +40,7 @@ function create2DContext(width, height, id) {
     canvas.height = height;
 
     // TODO: delete the style line below
-    canvas.style.border = "1px solid black";
+    //canvas.style.border = "1px solid black";
 
     var ctx = canvas.getContext("2d");
     ctx.imageSmoothingEnabled = false;
