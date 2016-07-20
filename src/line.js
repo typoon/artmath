@@ -101,10 +101,11 @@ Line.prototype.rotateRef = function(ref, angle) {
  * @param {int} divs - Number of points to be returned that constitute the
  *                     sine wave
  * @param {int} r - Radius (amplitude) of the sine wave
+ * @param {int} period - Period
  * @returns {Array<Point2>} - An array of points that can be used to draw the
  *                            sine wave by connecting them with lines
  */
-Line.prototype.getSinLine = function(divs, r) {
+Line.prototype.getSinLine = function(divs, r, period) {
     var points = new Array();
 
     var slopeAngle = this.getSlopeAngle();
@@ -127,7 +128,7 @@ Line.prototype.getSinLine = function(divs, r) {
         var angle = i * incAngle * (Math.PI / 180);
 
         var x = tmpP0.x + (incX * i);
-        var y = r * Math.sin(angle) + tmpP0.y + (incY*i);
+        var y = r * Math.sin(period*angle) + tmpP0.y + (incY*i);
 
         var p = new Point2(Math.round(x), Math.round(y));
 
@@ -149,11 +150,12 @@ Line.prototype.getSinLine = function(divs, r) {
  * @param {int} divs - Number of points to be returned that constitute the
  *                     cosine wave
  * @param {int} r - Radius (amplitude) of the cosine wave
+ * @param {int} period - Period
  * @returns {Array<Point2>} - An array of points that can be used to draw the
  *                            cosine wave by connecting them with lines
  */
 
-Line.prototype.getCosLine = function(divs, r) {
+Line.prototype.getCosLine = function(divs, r, period) {
     var points = new Array();
 
     var slopeAngle = this.getSlopeAngle();
@@ -176,7 +178,7 @@ Line.prototype.getCosLine = function(divs, r) {
         var angle = i * incAngle * (Math.PI / 180);
 
         var x = tmpP0.x + (incX * i);
-        var y = r * Math.cos(angle) + tmpP0.y + (incY*i);
+        var y = r * Math.cos(period*angle) + tmpP0.y + (incY*i);
 
         var p = new Point2(Math.round(x), Math.round(y));
 
