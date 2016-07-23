@@ -35,7 +35,8 @@ function get2DContext() {
  *
  */
 function create2DContext(width, height, id) {
-    var canvas = document.createElement(id);
+    var canvas = document.createElement('canvas');
+    canvas.id = id;
     canvas.width = width;
     canvas.height = height;
 
