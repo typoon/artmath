@@ -95,9 +95,15 @@ var Rect = (function () {
 
     }
 
-    Rect.prototype.getPoints = function() {
-        return [this.p0.clone(), this.p1.clone(), 
-                this.p2.clone(), this.p3.clone()];
+    Rect.prototype.getPoints = function(close) {
+        if(close) {
+            return [this.p0.clone(), this.p1.clone(), 
+                    this.p2.clone(), this.p3.clone(),
+                    this.p0.clone()];
+        } else {
+            return [this.p0.clone(), this.p1.clone(), 
+                    this.p2.clone(), this.p3.clone()];
+        }
     }
 
     /**
@@ -140,7 +146,7 @@ var Rect = (function () {
     }
 
     Rect.prototype.getCenter = function() {
-        p = new Point2(this.centerX, this.centerY);
+        var p = new Point2(this.centerX, this.centerY);
         return p;
     }
 
